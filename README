@@ -1,8 +1,0 @@
-ClickTracker is a meant to be deoloyed via the chef capistrano-like sinatra_app recipe
-
-ClickTracker is a simple Sinatra app that collects clicks from a user website,
-stores some basic information in Redis, and provides very crude 'related link"
-recommendations
- 
-It is my example of how to do recommendations with nearly and only 1 page of code, end to end
-
