@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler/setup'
 require "#{File.dirname(__FILE__)}/app"
 
+ENV['RACK_ENV'] ||= 'development'
+
 set :environment, ENV['RACK_ENV'].to_sym
 set :app_file,  'app.rb'
 disable :run
