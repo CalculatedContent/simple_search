@@ -1,0 +1,32 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.2.12)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    chronic (0.9.1)
+    htmlentities (4.3.1)
+    i18n (0.6.4)
+    multi_json (1.7.3)
+    rack (1.5.2)
+    rack-protection (1.5.0)
+      rack
+    sinatra (1.4.2)
+      rack (~> 1.5, >= 1.5.2)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    tilt (1.4.1)
+    whenever (0.8.2)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
+    xapian-fu (1.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  htmlentities
+  i18n
+  sinatra
+  whenever
+  xapian-fu
