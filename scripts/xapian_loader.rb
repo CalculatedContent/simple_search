@@ -13,14 +13,16 @@ require 'cloud_loader'
 include XapianFu
 
 opts = Trollop::options do
-  opt :database, "database file name", :short => "-d", :default => nil
+  opt :database, "database file name", :short => "-d", :default => CloudLoader::DEFAULT_DB
   opt :create, "create new database", :short => "-c", :default => true
   opt :bucket, "bucket", :short => "-b", :default => "simple-search"
   opt :path, "path on bucket", :short => "-p",  :default => ""
   opt :schema, "xapian schema", :short => "-s", :default => ""
   opt :pattern, "file patterns", :short => "-f", :default => "*" #, :multi => true
   opt :credentials_file, "s3cfg file", :short => "-r", :default => "~/.s3cfg"
-
+  opt :test, "test", :short => "-t", :default => nil
+  opt :verbose, "verbose", :short => "-v", :default => nil
+  opt :limit, "limit", :limit => "-l", :default => nil
 end
 
 log = Logger.new('logs/xapian.log')
@@ -50,10 +52,12 @@ loader = CloudLoader::Loader.new(opts)
 #  from the fields in hash
 fields = []
 if opts[:schema].nil? or opts[:schema].size==0 then
-fields = loader.first.first.symbolize_keys
+fields = loader.first.first.symbolize_keys.keys
 else
 # n/a yet
 end
+
+#TODO: how get fields for xapian gui
 
 # opts = { :bucket=>"cloud-crawler", :path=>"crawl-pages", :pattern=>/40UTC/  }
 # p

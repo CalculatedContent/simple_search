@@ -7,16 +7,17 @@ require 'xapian-fu'
 include XapianFu
 
 configure do
- DB = XapianDb.new(:dir => 'data/simple.db', :create => false)
+ DB = XapianDb.new(:dir => 'simple.db', :create => false)
 end
 
 get "/" do
   "simple search working"
 end
 
-get '/search' do
+
+get '/:field' do
   @query = params[:q]
-  @search_results = DB.search(@query).map { |x| x.values[:field] }
+  @search_results = DB.search(@query).map { |x| x.values[params[:field].to_sym] }
   erb :search_results
 end
 
