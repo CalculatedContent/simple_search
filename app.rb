@@ -19,3 +19,4 @@ get '/search' do
   @search_results = DB.search(@query).map { |x| x.values[:field] }
   erb :search_results
 end
+

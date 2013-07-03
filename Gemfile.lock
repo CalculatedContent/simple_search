@@ -1,21 +1,56 @@
+GIT
+  remote: git://github.com/CalculatedContent/cloud_loader.git
+  revision: 955e8d72df0e5acf778d7a89c972e26d7739ec16
+  specs:
+    cloud_loader (0.1)
+      fog
+
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.2.12)
-      i18n (~> 0.6)
-      multi_json (~> 1.0)
+    activesupport (4.0.0)
+      i18n (~> 0.6, >= 0.6.4)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
+    atomic (1.1.10)
+    builder (3.2.2)
     chronic (0.9.1)
+    excon (0.23.0)
+    fog (1.12.1)
+      builder
+      excon (~> 0.23.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.4)
     htmlentities (4.3.1)
     i18n (0.6.4)
-    multi_json (1.7.3)
+    mime-types (1.23)
+    minitest (4.7.5)
+    multi_json (1.7.7)
+    net-scp (1.1.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.7)
+    nokogiri (1.5.10)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
-    sinatra (1.4.2)
-      rack (~> 1.5, >= 1.5.2)
+    ruby-hmac (0.4.0)
+    sinatra (1.4.3)
+      rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    thread_safe (0.1.0)
+      atomic
     tilt (1.4.1)
+    trollop (2.0)
+    tzinfo (0.3.37)
     whenever (0.8.2)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
@@ -25,8 +60,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cloud_loader!
+  fog
   htmlentities
   i18n
   sinatra
+  trollop
   whenever
   xapian-fu
