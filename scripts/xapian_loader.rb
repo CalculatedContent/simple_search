@@ -27,6 +27,9 @@ end
 
 log = Logger.new('logs/xapian.log')
 opts[:database] ||= "#{opts[:bucket]}-#{opts[:path]}"
+log.info "opts #{opts}" if opts[:verbose]
+
+limit = opts[:limit].to_i if opts[:limit]
 
 # load fog credentials...for now, hack from reading .s3cfg
 # specify a test path
@@ -57,18 +60,24 @@ else
 # n/a yet
 end
 
+log.info "fields #{fields}" if opts[:verbose]
+
 #TODO: how get fields for xapian gui
 
 # opts = { :bucket=>"cloud-crawler", :path=>"crawl-pages", :pattern=>/40UTC/  }
 # p
 db = XapianDb.new(:dir => opts[:database], :create => opts[:create], :store => fields)
 
-loader.each do |hsh|
-  begin
-    db << hsh.symbolize_keys
-  rescue => e
-  log.error  e.message
-  log.error  e.backtrace
+loader.each_with_index do |chunk,idx|
+  break if limit and idx >= limit
+  log.info "#{idx} #{chunk}" if opts[:verbose]
+  chunk.each do |hsh|
+    begin
+      db << hsh.symbolize_keys
+    rescue => e
+    log.warn  e.message
+    log.warn  e.backtrace
+    end
   end
 end
 
