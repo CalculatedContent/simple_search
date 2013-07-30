@@ -3,11 +3,12 @@ require 'rubygems'
 require 'sinatra'
 require 'htmlentities'
 require 'xapian-fu'
+require 'simple_search'
 
 include XapianFu
 
 configure do
- DB = XapianDb.new(:dir => 'simple.db', :create => false)
+ DB = XapianDb.new(:dir => SimpleSearch::DEFAULT_DB, :create => falses)
 end
 
 get "/" do

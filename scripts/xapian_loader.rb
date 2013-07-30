@@ -6,6 +6,7 @@ require 'trollop'
 require 'active_support/inflector'
 require 'active_support/core_ext'
 require 'json'
+require 'simple_search'
 require 'cloud_loader'
 
 #require 'bundler/setup'
@@ -13,7 +14,7 @@ require 'cloud_loader'
 include XapianFu
 
 opts = Trollop::options do
-  opt :database, "database file name", :short => "-d", :default => CloudLoader::DEFAULT_DB
+  opt :database, "database file name", :short => "-d", :default => 'SimpleSearch::DEFAULT_DB'
   opt :create, "create new database", :short => "-c", :default => true
   opt :bucket, "bucket", :short => "-b", :default => "simple-search"
   opt :path, "path on bucket", :short => "-p",  :default => ""
@@ -32,8 +33,6 @@ log.info "opts #{opts}" if opts[:verbose]
 limit = opts[:limit].to_i if opts[:limit]
 
 # load fog credentials...for now, hack from reading .s3cfg
-# specify a test path
-# load
 
 cfg_hsh = {}
 File.open(File.expand_path(opts[:credentials_file])) do |f|
@@ -53,12 +52,12 @@ loader = CloudLoader::Loader.new(opts)
 # load xapian schema
 # if not present,  get line of first file and infer the fields
 #  from the fields in hash
-fields = []
-if opts[:schema].nil? or opts[:schema].size==0 then
-fields = loader.first.first.symbolize_keys.keys
-else
-# n/a yet
-end
+fields = SimpleSearch::FIELDS
+# if opts[:schema].nil? or opts[:schema].size==0 then
+# fields = loader.first.first.symbolize_keys.keys
+# else
+# # n/a yet
+# end
 
 log.info "fields #{fields}" if opts[:verbose]
 
