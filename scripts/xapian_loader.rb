@@ -17,7 +17,7 @@ require 'cloud_loader'
 include XapianFu
 
 opts = Trollop::options do
-  opt :database, "database file name", :short => "-d", :default => 'SimpleSearch::DEFAULT_DB'
+  opt :database, "database file name", :short => "-d", :default => SimpleSearch::DEFAULT_DB
   opt :create, "create new database", :short => "-c", :default => true
   opt :bucket, "bucket", :short => "-b", :default => "simple-search"
   opt :path, "path on bucket", :short => "-p",  :default => ""
