@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/CalculatedContent/cloud_loader.git
-  revision: 955e8d72df0e5acf778d7a89c972e26d7739ec16
+  revision: 906a129fa1cd62679491f4bc55e1887f0aa3345a
   specs:
     cloud_loader (0.1)
       fog
@@ -17,27 +17,29 @@ GEM
     atomic (1.1.10)
     builder (3.2.2)
     chronic (0.9.1)
-    excon (0.23.0)
-    fog (1.12.1)
+    excon (0.25.3)
+    fog (1.14.0)
       builder
-      excon (~> 0.23.0)
+      excon (~> 0.25.0)
       formatador (~> 0.2.0)
       mime-types
       multi_json (~> 1.0)
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
-      nokogiri (~> 1.5.0)
+      nokogiri (~> 1.5)
       ruby-hmac
     formatador (0.2.4)
     htmlentities (4.3.1)
     i18n (0.6.4)
     mime-types (1.23)
+    mini_portile (0.5.1)
     minitest (4.7.5)
     multi_json (1.7.7)
-    net-scp (1.1.1)
+    net-scp (1.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.7)
-    nokogiri (1.5.10)
+    net-ssh (2.6.8)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
@@ -46,12 +48,12 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    thread_safe (0.1.0)
+    thread_safe (0.1.2)
       atomic
     tilt (1.4.1)
     trollop (2.0)
     tzinfo (0.3.37)
-    whenever (0.8.2)
+    whenever (0.8.4)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
     xapian-fu (1.5.0)
